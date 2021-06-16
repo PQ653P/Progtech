@@ -1,0 +1,24 @@
+package com.company.Management;
+
+import com.company.Management.Observer;
+import com.company.CustomerOrder.OrderFactory;
+
+public class Manager extends Observer {
+    private int soldProducts = 0;
+    OrderFactory factory;
+
+    public Manager(OrderFactory factory) {
+        this.factory = factory;
+        this.factory.attach(this);
+    }
+
+    @Override
+    public void update() {
+        System.out.println("A product has been sold!");
+        soldProducts++;
+    }
+
+    public int getSoldProducts() {
+        return this.soldProducts;
+    }
+}
